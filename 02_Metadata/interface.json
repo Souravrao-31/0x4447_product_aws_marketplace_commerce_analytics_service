@@ -6,16 +6,13 @@
                         "default": "Basic"
                     },
                     "Parameters": [
-                        "CodePipelineArtifactsParam",
-                        "GitHubTokenParam",
-                        "StageParam"
+                        "CompanyNameParam", "AWSAccountNameParam"
                     ]
                 }
             ],
             "ParameterLabels": {
-                "CodePipelineArtifactsParam": { "default": "CodePipeline Artifacts Bucket" },
-                "GitHubTokenParam": { "default": "GitHub Token" },
-                "StageParam": { "default": "Stage" }
+                "CompanyNameParam": { "default" : "Company or Project name" },
+			    "AWSAccountNameParam": { "default" : "AWS Account" }
             }
         }
 }

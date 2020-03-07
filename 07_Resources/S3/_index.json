@@ -1,0 +1,40 @@
+{
+	"S3Reports": {
+		"Type": "AWS::S3::Bucket",
+		"Properties": {
+			"BucketName": { "Fn::Sub": "${CompanyNameParam}-${AWSAccountNameParam}-${AWS::Region}-aws-marketplace" },
+			"PublicAccessBlockConfiguration": {
+				"BlockPublicAcls": true,
+				"BlockPublicPolicy": true,
+				"IgnorePublicAcls": true,
+				"RestrictPublicBuckets": true
+			},
+			"LifecycleConfiguration": {
+				"Rules": [
+					{
+						"Id": "LowerCosts",
+						"NoncurrentVersionTransition": {
+							"StorageClass": "INTELLIGENT_TIERING",
+							"TransitionInDays": 1
+						},
+						"Status": "Enabled"
+					}
+				]
+			},
+			"Tags": [
+				{
+					"Key" : "Project Name",
+					"Value" : "AWS Marketplace"
+				},
+				{
+					"Key" : "Author",
+					"Value" : "0x_4447 LLC"
+				},
+				{
+					"Key" : "Info",
+					"Value" : "https://0x_4447.com"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,6 @@
+{
+	"SNSOutput": {
+		"Value": { "Ref": "SNSTopic" },
+		"Description": "The ARN of the SNS Topic."
+	}
+}
