@@ -1,6 +1,6 @@
-# Title me
+# AWS Marketplace Stats
 
-Describe me
+This stack creats all the resoruces necessary for the AWS Marketplace Collection setup found [here](https://docs.aws.amazon.com/marketplace/latest/userguide/commerce-analytics-service.html). Once the stack is deplyed in the Output tabe you'll have all the information needed for the Marketplace Portal.
 
 # DISCLAIMER!
 
@@ -8,30 +8,26 @@ This stack is available to anyone at no cost, but on an as-is basis. 0x4447, LLC
 
 # How to deploy
 
-<a target="_blank" href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=zer0x4447-aws_marketplace&templateURL=https://s3.amazonaws.com/0x4447-drive-cloudformation/aws_marketplace.json">
+<a target="_blank" href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=zer0x4447-aws-marketplace&templateURL=https://s3.amazonaws.com/0x4447-drive-cloudformation/aws_marketplace.json">
 <img align="left" style="float: left; margin: 0 10px 0 0;" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"></a>
 
 All you need to do to deploy this stack is click the button to the left and follow the instructions that CloudFormation provides in your AWS Dashboard. Alternatively you can download the CF file from [here](https://s3.amazonaws.com/0x4447-drive-cloudformation/aws_marketplace.json).
 
 # What will deploy?
 
-![aws_marketplace Diagram](https://raw.githubusercontent.com/0x4447/0x4447-product-aws_marketplace/assets/diagram.png)
-
-List me
-
-All project resources can be found [here](https://github.com/topics/0x4447-product-aws_marketplace).
-
-# Auto deploy
-
-The stack is set up in a such a way that any time new code is pushed to a selected branch, the CodePipeline picks up the change and updates the Lambda for you. These are the available branches:
+- 1x S3 Bucket
+- 1x SNS Topic
 
 # Manual work
 
-Work me
+- Navigate to the [Commerce Analytics Service enrollment page](https://aws.amazon.com/marketplace/management/cas/enroll).
+- Enter the Amazon S3 bucket name and Amazon SNS topic ARN, and choose Enroll.
+- On the permissions page, choose Allow.
+- On the AWS Marketplace Management Portal, record the Role Name ARN in the success message. You will need it to call the service.
 
 # Pricing
 
-Price me.
+Standard S3 and SNS pricing applyies.
 
 # How to generate the CloudFormation file
 
