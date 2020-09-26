@@ -1,0 +1,17 @@
+{
+	"Cron": {
+		"Type": "AWS::Events::Rule",
+		"Properties": {
+			"Description": "Once a day ask the AWS Marketplace to dump the latest data to S3.",
+			"Name": "0x4447_request_stats",
+			"ScheduleExpression": "cron(0 0 * * ? *)",
+			"State": "ENABLED",
+			"Targets": [
+				{
+					"Arn": { "Fn::GetAtt": ["RequestStatsLambda", "Arn"] },
+					"Id": "Lambda"
+				}
+			]
+		}
+	}
+}

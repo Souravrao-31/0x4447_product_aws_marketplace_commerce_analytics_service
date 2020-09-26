@@ -1,0 +1,11 @@
+{
+	"RequestStatsLambdaPermission": {
+		"Type": "AWS::Lambda::Permission",
+		"Properties": {
+			"Action": "lambda:InvokeFunction",
+			"FunctionName": { "Fn::GetAtt": [ "RequestStatsLambda", "Arn" ] },
+			"Principal": "events.amazonaws.com",
+			"SourceArn": { "Fn::GetAtt": ["Cron", "Arn"] }
+		}
+	}
+}

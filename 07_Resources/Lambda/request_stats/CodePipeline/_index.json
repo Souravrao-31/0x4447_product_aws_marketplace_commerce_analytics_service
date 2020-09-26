@@ -1,0 +1,66 @@
+{
+	"RequestStatsLambdaCodePipeline": {
+		"Type": "AWS::CodePipeline::Pipeline",
+		"DependsOn": "RequestStatsLambdaCodePipelineRole",
+		"Properties": {
+			"Name": "lambda_0x4447_ec2_hibernation",
+			"ArtifactStore": {
+				"Location": { "Ref": "CodePipelineArtifactsParam" },
+				"Type": "S3"
+			},
+			"RoleArn": { "Fn::GetAtt": ["RequestStatsLambdaCodePipelineRole", "Arn" ] },
+			"Stages": [
+				{
+					"Name": "Get",
+					"Actions": [
+						{
+							"Name": "Material",
+							"RunOrder": 1,
+							"ActionTypeId": {
+								"Category": "Source",
+								"Owner": "ThirdParty",
+								"Provider": "GitHub",
+								"Version": "1"
+							},
+							"Configuration": {
+								"Owner": "0x4447",
+								"Repo": "0x4447_product_aws_marketplace_commerce_analytics_service_request_stats",
+								"Branch": { "Ref": "StageParam" },
+								"PollForSourceChanges": false,
+								"OAuthToken": { "Ref": "GitHubTokenParam" }
+							},
+							"OutputArtifacts": [
+								{
+									"Name": "source_code"
+								}
+							]
+						}
+					]
+				},
+				{
+					"Name": "Cast",
+					"Actions": [
+						{
+							"Name": "Mold",
+							"RunOrder": 1,
+							"InputArtifacts": [
+								{
+									"Name": "source_code"
+								}
+							],
+							"Configuration": {
+								"ProjectName": { "Ref": "CodeBuild" }
+							},
+							"ActionTypeId": {
+								"Category": "Build",
+								"Owner": "AWS",
+								"Provider": "CodeBuild",
+								"Version": "1"
+							}
+						}
+					]
+				}
+			]
+		}
+	}
+}

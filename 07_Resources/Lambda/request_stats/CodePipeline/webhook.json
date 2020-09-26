@@ -1,0 +1,21 @@
+{
+	"RequestStatsLambdaCodePipelineWebhook": {
+		"Type": "AWS::CodePipeline::Webhook",
+		"Properties": {
+			"Authentication": "GITHUB_HMAC",
+			"AuthenticationConfiguration": {
+				"SecretToken": { "Ref": "GitHubTokenParam" }
+			},
+			"Filters": [
+				{
+					"JsonPath": "$.ref",
+					"MatchEquals": "refs/heads/{Branch}"
+				}
+			],
+			"TargetPipeline": { "Ref": "RequestStatsLambdaCodePipeline" },
+			"TargetAction": "Material",
+			"TargetPipelineVersion": { "Fn::GetAtt": [ "RequestStatsLambdaCodePipeline", "Version" ]},
+			"RegisterWithThirdParty": true
+		}
+	}
+}
