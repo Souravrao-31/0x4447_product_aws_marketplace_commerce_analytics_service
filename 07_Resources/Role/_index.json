@@ -1,0 +1,56 @@
+{
+	"AWSMarketplaceRole": {
+		"Type": "AWS::IAM::Role",
+		"Properties": {
+			"RoleName": "0x4447MarketplaceCommerceAnalyticsRole",
+			"AssumeRolePolicyDocument": {
+				"Version": "2012-10-17",
+				"Statement": [
+					{
+						"Effect": "Allow",
+						"Principal": {
+							"Service": "lambda.amazonaws.com"
+						},
+						"Action": "sts:AssumeRole"
+					}
+				]
+			},
+			"Policies": [
+				{
+					"PolicyName": "s3",
+					"PolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [
+                            {
+                                "Effect": "Allow",
+                                "Action": "s3:GetBucketLocation",
+                                "Resource": { "Fn::Sub": "arn:aws:s3:::${S3Reports}" }
+                            },
+                            {
+                                "Effect": "Allow",
+                                "Action": "s3:PutObject",
+                                "Resource": { "Fn::Sub": "arn:aws:s3:::${S3Reports}/*" }
+                            }
+                        ]
+                    }
+                },
+                {
+					"PolicyName": "sns",
+					"PolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [
+                            {
+                                "Effect": "Allow",
+                                "Action": [
+                                    "sns:Publish",
+                                    "sns:GetTopicAttributes"
+                                ],
+                                "Resource": { "Ref": "SNSTopic" }
+                            }
+                        ]
+                    }
+                }
+			]
+		}
+	}
+}

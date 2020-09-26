@@ -24,15 +24,15 @@
 			"Tags": [
 				{
 					"Key" : "Project Name",
-					"Value" : "AWS Marketplace"
+					"Value" : "AWS Marketplace Stats"
 				},
 				{
 					"Key" : "Author",
-					"Value" : "0x_4447 LLC"
+					"Value" : "0x4447 LLC"
 				},
 				{
 					"Key" : "Info",
-					"Value" : "https://0x_4447.com"
+					"Value" : "https://0x4447.com"
 				}
 			]
 		}
