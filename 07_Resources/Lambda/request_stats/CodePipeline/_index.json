@@ -3,7 +3,7 @@
 		"Type": "AWS::CodePipeline::Pipeline",
 		"DependsOn": "RequestStatsLambdaCodePipelineRole",
 		"Properties": {
-			"Name": "lambda_0x4447_ec2_hibernation",
+			"Name": "0x4447_request_stats",
 			"ArtifactStore": {
 				"Location": { "Ref": "CodePipelineArtifactsParam" },
 				"Type": "S3"

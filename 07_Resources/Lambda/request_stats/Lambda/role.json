@@ -2,7 +2,7 @@
 	"RequestStatsLambdaRole": {
 		"Type": "AWS::IAM::Role",
 		"Properties": {
-			"RoleName": "lambda_0x4447_ec2_hibernation_lambda",
+			"RoleName": "0x4447_request_stats_lambda",
 			"AssumeRolePolicyDocument": {
 				"Version": "2012-10-17",
 				"Statement": [

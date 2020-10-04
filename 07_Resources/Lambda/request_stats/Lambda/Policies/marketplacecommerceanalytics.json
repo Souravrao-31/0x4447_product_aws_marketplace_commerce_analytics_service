@@ -1,0 +1,21 @@
+{
+	"RequestStatsLambdaPolicyMarketplace": {
+		"Type": "AWS::IAM::Policy",
+		"Properties": {
+			"PolicyName": "marketplace",
+			"Roles": [ { "Ref": "RequestStatsLambdaRole" } ],
+			"PolicyDocument": {
+				"Version": "2012-10-17",
+				"Statement": [
+					{
+						"Effect": "Allow",
+						"Action": [
+							"marketplacecommerceanalytics:GenerateDataSet"
+						],
+						"Resource": { "Fn::Sub": "arn:aws:sts::${AWS::AccountId}:assumed-role/${RequestStatsLambdaRole}/${RequestStatsLambda}" }
+					}
+				]
+			}
+		}
+	}
+}

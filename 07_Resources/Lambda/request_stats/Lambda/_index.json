@@ -2,7 +2,7 @@
 	"RequestStatsLambda": {
 		"Type": "AWS::Lambda::Function",
 		"Properties": {
-			"FunctionName": "0x4447_ec2_hibernation",
+			"FunctionName": "0x4447_request_stats",
 			"Code": {
 				"ZipFile": "exports.handler = (event) => { return new Promise(function(resolve, reject) { resolve('OK'); }) };"
 			},
@@ -13,7 +13,10 @@
 			"Timeout": 60,
 			"Environment": {
 				"Variables": {
-					"STAGE": { "Ref": "StageParam" }
+					"STAGE": { "Ref": "StageParam" },
+					"S3_BUCKET": { "Ref": "S3Reports" },
+					"ROLE_ARN": { "Fn::GetAtt" : [ "AWSMarketplaceRole", "Arn" ]},
+					"SNS_ARN": { "Ref": "SNSTopic" }
 				}
 			}
 		}
